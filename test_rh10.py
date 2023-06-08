@@ -14,7 +14,6 @@ class TestRh10():
   
   def test_rh10(self):
     self.driver.get("http://users.bugred.ru/user/login/index.html")
-    self.driver.set_window_size(1279, 784)
     self.driver.find_element(By.NAME, "login").click()
     self.driver.find_element(By.NAME, "login").send_keys("popmedrus@gmail.com")
     self.driver.find_element(By.NAME, "password").send_keys("12345678")
