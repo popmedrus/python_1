@@ -12,10 +12,10 @@ class TestRh10:
   def teardown_method(self):
     self.driver.quit()
   
-  def test_rh10(self):
+  def test_create_user(self):
     self.open_home_page()
     self.login(login_login="popmedrus@gmail.com", login_password="12345678")
-    self.create_user(user_name="rh16", user_email="rh16@gmail.com", user_password="12345678")
+    self.create_user(user_name="rh17", user_email="rh17@gmail.com", user_password="12345678")
     self.check_new_user()
     self.logout()
 
@@ -29,7 +29,7 @@ class TestRh10:
     self.driver.find_element(By.NAME, "q").send_keys(Keys.ENTER)
     self.driver.find_element(By.LINK_TEXT, "Посмотреть").click()
 
-  def test_create_user(self, user_name, user_email, user_password):
+  def create_user(self, user_name, user_email, user_password):
     self.driver.find_element(By.LINK_TEXT, "Добавить пользователя").click()
     self.driver.find_element(By.NAME, "noibiz_name").click()
     self.driver.find_element(By.NAME, "noibiz_name").send_keys(user_name)
@@ -56,4 +56,6 @@ class TestRh10:
 
   def open_home_page(self):
     self.driver.get("http://users.bugred.ru/user/login/index.html")
+
+
   
