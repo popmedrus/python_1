@@ -2,6 +2,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from user import User
 
 
 class TestRh10:
@@ -15,7 +16,7 @@ class TestRh10:
   def test_create_user(self):
     self.open_home_page()
     self.login(login_login="popmedrus@gmail.com", login_password="12345678")
-    self.create_user(user_name="rh17", user_email="rh17@gmail.com", user_password="12345678")
+    self.create_user(User(user_name="rh17", user_email="rh17@gmail.com", user_password="12345678"))
     self.check_new_user()
     self.logout()
 
@@ -29,14 +30,14 @@ class TestRh10:
     self.driver.find_element(By.NAME, "q").send_keys(Keys.ENTER)
     self.driver.find_element(By.LINK_TEXT, "Посмотреть").click()
 
-  def create_user(self, user_name, user_email, user_password):
+  def create_user(self, user):
     self.driver.find_element(By.LINK_TEXT, "Добавить пользователя").click()
     self.driver.find_element(By.NAME, "noibiz_name").click()
-    self.driver.find_element(By.NAME, "noibiz_name").send_keys(user_name)
+    self.driver.find_element(By.NAME, "noibiz_name").send_keys(user.user_name)
     self.driver.find_element(By.NAME, "noibiz_email").click()
-    self.driver.find_element(By.NAME, "noibiz_email").send_keys(user_email)
+    self.driver.find_element(By.NAME, "noibiz_email").send_keys(user.user_email)
     self.driver.find_element(By.NAME, "noibiz_password").click()
-    self.driver.find_element(By.NAME, "noibiz_password").send_keys(user_password)
+    self.driver.find_element(By.NAME, "noibiz_password").send_keys(user.user_password)
     self.driver.find_element(By.NAME, "noibiz_birthday").click()
     self.driver.find_element(By.NAME, "noibiz_birthday").send_keys("0001-05-07")
     self.driver.find_element(By.NAME, "noibiz_birthday").send_keys("0019-05-07")
