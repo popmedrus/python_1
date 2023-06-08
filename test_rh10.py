@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
 
-class TestRh10():
+class TestRh10:
   def setup_method(self):
     self.driver = webdriver.Firefox()
     self.vars = {}
@@ -15,17 +15,17 @@ class TestRh10():
   def test_rh10(self):
     self.open_home_page()
     self.login(login_login="popmedrus@gmail.com", login_password="12345678")
-    self.test_create_user(user_name="rh13", user_email="rh13@gmail.com", user_password="12345678")
-    self.test_check_new_user()
+    self.test_create_user(user_name="rh16", user_email="rh16@gmail.com", user_password="12345678")
+    self.check_new_user()
     self.logout()
 
   def logout(self):
     self.driver.find_element(By.LINK_TEXT, "popmedrus").click()
     self.driver.find_element(By.LINK_TEXT, "Выход").click()
 
-  def test_check_new_user(self):
+  def check_new_user(self):
     self.driver.find_element(By.NAME, "q").click()
-    self.driver.find_element(By.NAME, "q").send_keys("rh13")
+    self.driver.find_element(By.NAME, "q").send_keys("rh14")
     self.driver.find_element(By.NAME, "q").send_keys(Keys.ENTER)
     self.driver.find_element(By.LINK_TEXT, "Посмотреть").click()
 
@@ -38,14 +38,14 @@ class TestRh10():
     self.driver.find_element(By.NAME, "noibiz_password").click()
     self.driver.find_element(By.NAME, "noibiz_password").send_keys(user_password)
     self.driver.find_element(By.NAME, "noibiz_birthday").click()
-    #self.driver.find_element(By.NAME, "noibiz_birthday").send_keys("0001-05-07")
-    #self.driver.find_element(By.NAME, "noibiz_birthday").send_keys("0019-05-07")
-    #self.driver.find_element(By.NAME, "noibiz_birthday").send_keys("0199-05-07")
-    #self.driver.find_element(By.NAME, "noibiz_birthday").send_keys("1995-05-07")
-    #self.driver.find_element(By.NAME, "noibiz_gender").click()
-    #dropdown = self.driver.find_element(By.NAME, "noibiz_gender")
-    #dropdown.find_element(By.XPATH, "//option[. = 'Мужской']").click()
-    #self.driver.find_element(By.CSS_SELECTOR, "option:nth-child(2)").click()
+    self.driver.find_element(By.NAME, "noibiz_birthday").send_keys("0001-05-07")
+    self.driver.find_element(By.NAME, "noibiz_birthday").send_keys("0019-05-07")
+    self.driver.find_element(By.NAME, "noibiz_birthday").send_keys("0199-05-07")
+    self.driver.find_element(By.NAME, "noibiz_birthday").send_keys("1995-05-07")
+    self.driver.find_element(By.NAME, "noibiz_gender").click()
+    dropdown = self.driver.find_element(By.NAME, "noibiz_gender")
+    dropdown.find_element(By.XPATH, "//option[. = 'Мужской']").click()
+    self.driver.find_element(By.CSS_SELECTOR, "option:nth-child(2)").click()
     self.driver.find_element(By.NAME, "act_create").click()
 
   def login(self, login_login, login_password):
