@@ -15,7 +15,7 @@ class TestRh10:
   def test_rh10(self):
     self.open_home_page()
     self.login(login_login="popmedrus@gmail.com", login_password="12345678")
-    self.test_create_user(user_name="rh16", user_email="rh16@gmail.com", user_password="12345678")
+    self.create_user(user_name="rh16", user_email="rh16@gmail.com", user_password="12345678")
     self.check_new_user()
     self.logout()
 
