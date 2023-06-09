@@ -12,9 +12,9 @@ def app(request):
 
 
 def test_create_user(app):
-    app.login(login_login="popmedrus@gmail.com", login_password="12345678")
+    app.session.login(login_login="popmedrus@gmail.com", login_password="12345678")
     app.create_user(User(user_name="rh17", user_email="rh17@gmail.com", user_password="12345678"))
-    app.logout()
+    app.session.logout()
 
 
 

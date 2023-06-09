@@ -1,16 +1,14 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from fixture.session import SessionHelper
 
 
 class Application:
     def __init__(self):
         self.driver = webdriver.Firefox()
         self.vars = {}
-
-    def logout(self):
-        self.driver.find_element(By.LINK_TEXT, "popmedrus").click()
-        self.driver.find_element(By.LINK_TEXT, "Выход").click()
+        self.session = SessionHelper(self)
 
     def check_new_user(self):
         self.driver.find_element(By.NAME, "q").click()
@@ -37,13 +35,6 @@ class Application:
         self.driver.find_element(By.CSS_SELECTOR, "option:nth-child(2)").click()
         self.driver.find_element(By.NAME, "act_create").click()
         self.check_new_user()
-
-    def login(self, login_login, login_password):
-        self.open_home_page()
-        self.driver.find_element(By.NAME, "login").click()
-        self.driver.find_element(By.NAME, "login").send_keys(login_login)
-        self.driver.find_element(By.NAME, "password").send_keys(login_password)
-        self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(3) .btn").click()
 
     def open_home_page(self):
         self.driver.get("http://users.bugred.ru/user/login/index.html")
