@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from fixture.session import SessionHelper
+from fixture.user import UserHelper
 
 
 class Application:
@@ -9,6 +10,7 @@ class Application:
         self.driver = webdriver.Firefox()
         self.vars = {}
         self.session = SessionHelper(self)
+        self.user = UserHelper(self)
 
     def check_new_user(self):
         self.driver.find_element(By.NAME, "q").click()
