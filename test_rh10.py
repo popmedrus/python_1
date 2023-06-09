@@ -14,10 +14,8 @@ class TestRh10:
     self.driver.quit()
   
   def test_create_user(self):
-    self.open_home_page()
     self.login(login_login="popmedrus@gmail.com", login_password="12345678")
     self.create_user(User(user_name="rh17", user_email="rh17@gmail.com", user_password="12345678"))
-    self.check_new_user()
     self.logout()
 
   def logout(self):
@@ -48,8 +46,10 @@ class TestRh10:
     dropdown.find_element(By.XPATH, "//option[. = 'Мужской']").click()
     self.driver.find_element(By.CSS_SELECTOR, "option:nth-child(2)").click()
     self.driver.find_element(By.NAME, "act_create").click()
+    self.check_new_user()
 
   def login(self, login_login, login_password):
+    self.open_home_page()
     self.driver.find_element(By.NAME, "login").click()
     self.driver.find_element(By.NAME, "login").send_keys(login_login)
     self.driver.find_element(By.NAME, "password").send_keys(login_password)
