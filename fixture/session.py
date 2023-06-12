@@ -13,5 +13,5 @@ class SessionHelper:
         self.app.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(3) .btn").click()
 
     def logout(self):
-        self.app.driver.find_element(By.LINK_TEXT, "popmedrus").click()
+        self.app.driver.find_element(By.LINK_TEXT, "popmed").click()
         self.app.driver.find_element(By.LINK_TEXT, "Выход").click()
