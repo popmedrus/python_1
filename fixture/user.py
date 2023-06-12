@@ -47,6 +47,3 @@ class UserHelper:
         self.app.driver.find_element(By.LINK_TEXT, "Изменить").click()
         self.fill_user_form(modified_data)
         self.app.driver.find_element(By.NAME, "act_update").click()
-
-
-
