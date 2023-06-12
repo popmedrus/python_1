@@ -6,9 +6,9 @@ class UserHelper:
     def __init__(self, app):
         self.app = app
 
-    def check_new_user(self):
+    def check(self, user):
         self.app.driver.find_element(By.NAME, "q").click()
-        self.app.driver.find_element(By.NAME, "q").send_keys("rh14")
+        self.app.driver.find_element(By.NAME, "q").send_keys(user.user_name)
         self.app.driver.find_element(By.NAME, "q").send_keys(Keys.ENTER)
         self.app.driver.find_element(By.LINK_TEXT, "Посмотреть").click()
 
@@ -30,4 +30,4 @@ class UserHelper:
         dropdown.find_element(By.XPATH, "//option[. = 'Мужской']").click()
         self.app.driver.find_element(By.CSS_SELECTOR, "option:nth-child(2)").click()
         self.app.driver.find_element(By.NAME, "act_create").click()
-        self.check_new_user()
+
