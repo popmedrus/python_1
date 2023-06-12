@@ -4,11 +4,14 @@ from model.user import User
 
 def test_create_user(app):
     app.session.login(login_login="popmedrus@gmail.com", login_password="12345678")
-    app.user.create(User(user_name="rh17", user_email="rh17@gmail.com", user_password="12345678"))
+    app.user.create(User(user_name="rh21", user_email="rh21@gmail.com", user_password="12345678"))
     app.session.logout()
 
 
-
+def test_check_user(app):
+    app.session.login(login_login="popmedrus@gmail.com", login_password="12345678")
+    app.user.check(User(user_name="rh21", user_email="", user_password=""))
+    app.session.logout()
 
 
   
