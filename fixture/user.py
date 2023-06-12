@@ -23,12 +23,15 @@ class UserHelper:
     def fill_user_form(self, user):
         if user.user_name is not None:
             self.app.driver.find_element(By.NAME, "noibiz_name").click()
+            self.app.driver.find_element(By.NAME, "noibiz_name").clear()
             self.app.driver.find_element(By.NAME, "noibiz_name").send_keys(user.user_name)
         if user.user_email is not None:
             self.app.driver.find_element(By.NAME, "noibiz_email").click()
+            self.app.driver.find_element(By.NAME, "noibiz_email").clear()
             self.app.driver.find_element(By.NAME, "noibiz_email").send_keys(user.user_email)
         if user.user_password is not None:
             self.app.driver.find_element(By.NAME, "noibiz_password").click()
+            self.app.driver.find_element(By.NAME, "noibiz_password").clear()
             self.app.driver.find_element(By.NAME, "noibiz_password").send_keys(user.user_password)
         self.app.driver.find_element(By.NAME, "noibiz_birthday").click()
         self.app.driver.find_element(By.NAME, "noibiz_birthday").send_keys("0001-05-07")
