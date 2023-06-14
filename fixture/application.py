@@ -12,6 +12,13 @@ class Application:
         self.session = SessionHelper(self)
         self.user = UserHelper(self)
 
+    def is_valid(self):
+        try:
+            self.driver.current_url
+            return True
+        except:
+            return False
+
     def check_new_user(self):
         self.driver.find_element(By.NAME, "q").click()
         self.driver.find_element(By.NAME, "q").send_keys("rh14")
