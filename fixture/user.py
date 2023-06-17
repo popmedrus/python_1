@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from model.user import User
 
 
 class UserHelper:
@@ -47,3 +48,10 @@ class UserHelper:
         self.app.driver.find_element(By.LINK_TEXT, "Изменить").click()
         self.fill_user_form(modified_data)
         self.app.driver.find_element(By.NAME, "act_update").click()
+
+    def get_users_list(self):
+        list_users = []
+        for element in self.app.driver.find_elements(By.LINK_TEXT, "Посмотреть"):
+            id = element.get_attribute("href")
+            list_users.append(User(user_name=id))
+        return list_users
