@@ -33,7 +33,7 @@ class SessionHelper:
                 return
             else:
                 self.logout()
-        self.login (login_login, login_password)
+        self.login(login_login, login_password)
 
 
 
