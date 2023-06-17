@@ -48,5 +48,8 @@ class Application:
     def open_home_page(self):
         self.driver.get("http://users.bugred.ru/user/login/index.html")
 
+    def open_users_page(self):
+        self.driver.get("http://users.bugred.ru/")
+
     def destroy(self):
         self.driver.quit()
