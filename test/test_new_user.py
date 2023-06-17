@@ -3,7 +3,11 @@ from model.user import User
 
 
 def test_create_user(app):
-    app.user.create(User(user_name="rh1", user_email="rh1@gmail.com", user_password="12345678"))
+    old_users = app.user.get_users_list()
+    app.user.create(User(user_name="rh3", user_email="rh3@gmail.com", user_password="12345678"))
+    new_users = app.user.get_users_list()
+    assert len(old_users) == len(new_users)
+
 
 
 def test_check_user(app):
