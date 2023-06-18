@@ -4,3 +4,9 @@ class User:
         self.user_email = user_email
         self.user_password = user_password
         self.id = id
+
+    def __repr__(self):
+        return "%s:%s" % (self.id, self.user_name)
+
+    def __eq__(self, other):
+        return (self.id is None or other.id is None or self.id == other.id) and self.user_name == other.user_name
