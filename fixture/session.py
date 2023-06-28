@@ -24,8 +24,7 @@ class SessionHelper:
         return len(self.app.driver.find_elements(By.LINK_TEXT, "Выход")) > 0
 
     def is_logged_in_as(self, user_name):
-        return self.app.driver.find_element(By.LINK_TEXT, "popmed").text == '('+user_name+')'
-
+        return self.app.driver.find_element(By.LINK_TEXT, "popmed").text == "(%s)" % user_name
 
     def ensure_login(self, login_login, login_password):
         if self.is_logged_in():
@@ -34,8 +33,3 @@ class SessionHelper:
             else:
                 self.logout()
         self.login(login_login, login_password)
-
-
-
-
-
