@@ -6,11 +6,17 @@ from fixture.user import UserHelper
 
 
 class Application:
-    def __init__(self):
-        self.driver = webdriver.Firefox()
+    def __init__(self, browser, base_url):
+        if browser == 'firefox':
+            self.driver = webdriver.Firefox()
+        elif browser == 'chrome':
+            self.driver = webdriver.Chrome()
+        else:
+            raise ValueError('Unrecognized browser %s' % browser)
         self.vars = {}
         self.session = SessionHelper(self)
         self.user = UserHelper(self)
+        self.base_url = base_url
 
     def is_valid(self):
         try:
@@ -49,7 +55,7 @@ class Application:
         self.driver.get("http://users.bugred.ru/user/login/index.html")
 
     def open_users_page(self):
-        self.driver.get("http://users.bugred.ru/")
+        self.driver.get(self.base_url)
 
     def destroy(self):
         self.driver.quit()
