@@ -8,7 +8,7 @@ import string
 
 def random_string(prefix, maxlen):
     symbols = string.ascii_letters + string.digits + " "
-    return prefix + "".join([random.choice(symbols)for i in range(random.randrange(maxlen))])
+    return prefix + "".join([random.choice(symbols) for i in range(random.randrange(maxlen))])
 
 
 testdata = [User(user_name="", user_email="", user_password="")] + [
@@ -17,7 +17,7 @@ testdata = [User(user_name="", user_email="", user_password="")] + [
 ]
 
 
-@pytest.mark.parametrize("user", testdata)
+@pytest.mark.parametrize("user", testdata, ids=[repr(x) for x in testdata])
 def test_create_user(app, user):
     old_users = app.user.get_users_list()
     app.user.create(user)
