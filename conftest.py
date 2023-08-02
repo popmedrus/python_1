@@ -28,6 +28,6 @@ def stop(request):
     return fixture
 
 
-def pytest_addoption (parser):
+def pytest_addoption(parser):
     parser.addoption('--browser', action='store', default='firefox')
     parser.addoption('--baseUrl', action='store', default="http://users.bugred.ru/")
